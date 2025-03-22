@@ -7,7 +7,8 @@ distinct (as much as possible) and also reflect the internal structure of the da
 for generating an arbitrary number of maximally-distinct colors is also useful by itself for generating color palettes
 for arbitrary categorical data.
 
-This is a port of the [published R package](https://CRAN.R-project.org/package=chameleon). Note the results aren't only
+This is a port of the [published R package](https://CRAN.R-project.org/package=chameleon) that has a [vignette](https://cran.r-project.org/web/packages/chameleon/vignettes/examples.html) with examples of using this and the results. Note the results of the Julia
+package are only
 "mostly identical" for the same data, because the color conversion functions behave slightly differently between R and
 Julia.
 
