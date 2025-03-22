@@ -11,7 +11,7 @@ This is a port of the [published R package](https://CRAN.R-project.org/package=c
 "mostly identical" for the same data, because the color conversion functions behave slightly differently between R and
 Julia.
 
-See the [v0.1.1 documentation](https://tanaylab.github.io/Chameleon.jl/v0.1.1) for details.
+See the [v0.1.0 documentation](https://tanaylab.github.io/Chameleon.jl/v0.1.0) for details.
 
 ## Usage
 
@@ -20,13 +20,37 @@ variables/measurements, then use `Chameleon.data_colors` to obtain a color for e
 optional `groups` parameter which assigns a group to each row, to obtain a color for each group instead of a color for
 each row.
 
+```julia
+using Chameleon
+
+data_matrix::AbstractMatrix{<:Real} = ...  # Arbitrary data
+
+color_per_column::AbstractVector{<:AbstractString} =  # In #RRGGBB format
+    data_colors(data_matrix)
+
+group_per_column::AbstractVector{T} = ...  # Arbitrary type for group identifiers
+
+color_per_group::AbstractDict{T, <:AbstractString} =  # Key is group identifier, value is in #RRGGBB format
+    data_colors(data_matrix; groups = group_per_column)
+```
+
 If you just want a list of an arbitrary number of maximally-distinct colors, call `Chameleon.distinct_colors`. This will
 return color names and their Lab coordinates, in an arbitrary order. You can use this to generate color palettes for
 data without trying to make more-similar data have more-similar colors.
 
+```julia
+using Chameleon
+
+n_colors::Integer = ...  # Non-negative
+
+colors::AbstractVector{<:AbstractString}, # n_colors names in #RRGGBB format
+labs::AbstractMatrix{<:AbstractFloat} = # 3 rows (l, a, b) and n_colors columns
+    distinct_colors(n_colors)
+```
+
 ## Installation
 
-Just `Pkg.add("Chamelon")`, like installing any other Julia package.
+Just `Pkg.add("Chameleon")`, like installing any other Julia package.
 
 ## License (MIT)
 
